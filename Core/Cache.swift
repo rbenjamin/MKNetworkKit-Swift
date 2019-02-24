@@ -74,19 +74,19 @@ open class Cache<T>: CustomDebugStringConvertible {
     }
 
     #if os(iOS) || os(tvOS)
-      NotificationCenter.default.addObserver(forName: NSNotification.Name.UIApplicationDidReceiveMemoryWarning,
+      NotificationCenter.default.addObserver(forName: UIApplication.didReceiveMemoryWarningNotification,
         object: nil, queue: nil, using: { (_) in
           self.flushToDisk()
       })
-      NotificationCenter.default.addObserver(forName: NSNotification.Name.UIApplicationDidEnterBackground,
+      NotificationCenter.default.addObserver(forName: UIApplication.didEnterBackgroundNotification,
         object: nil, queue: nil, using: { (_) in
           self.flushToDisk()
       })
-      NotificationCenter.default.addObserver(forName: NSNotification.Name.UIApplicationWillResignActive,
+      NotificationCenter.default.addObserver(forName: UIApplication.willResignActiveNotification,
         object: nil, queue: nil, using: { (_) in
           self.flushToDisk()
       })
-      NotificationCenter.default.addObserver(forName: NSNotification.Name.UIApplicationWillTerminate,
+      NotificationCenter.default.addObserver(forName: UIApplication.willTerminateNotification,
         object: nil, queue: nil, using: { (_) in
           self.flushToDisk()
       })
@@ -192,10 +192,10 @@ open class Cache<T>: CustomDebugStringConvertible {
   // MARK:- De-initalizer
   deinit {
     #if os(iOS)
-      NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIApplicationDidReceiveMemoryWarning, object: nil)
-      NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIApplicationDidEnterBackground, object: nil)
-      NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIApplicationWillResignActive, object: nil)
-      NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIApplicationWillTerminate, object: nil)
+      NotificationCenter.default.removeObserver(self, name: UIApplication.didReceiveMemoryWarningNotification, object: nil)
+      NotificationCenter.default.removeObserver(self, name: UIApplication.didEnterBackgroundNotification, object: nil)
+      NotificationCenter.default.removeObserver(self, name: UIApplication.willResignActiveNotification, object: nil)
+      NotificationCenter.default.removeObserver(self, name: UIApplication.willTerminateNotification, object: nil)
     #endif
     #if os(OSX)
       NotificationCenter.default.addObserver(forName: NSNotification.Name.NSApplicationWillHide, object: nil, queue: nil) { (_) in

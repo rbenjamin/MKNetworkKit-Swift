@@ -50,7 +50,7 @@ open class Host: NSObject, URLSessionTaskDelegate, URLSessionDataDelegate, URLSe
   fileprivate var defaultSession: Foundation.URLSession!
   fileprivate var ephermeralSession: Foundation.URLSession!
   fileprivate var backgroundSession: Foundation.URLSession!
-  open var backgroundSessionCompletionHandler: ((Void) -> Void)?
+  open var backgroundSessionCompletionHandler: (() -> Void)?
   open var backgroundSessionIdentifier: String = "com.mknetworkkit.backgroundsessionidentifier"
 
   // MARK:- Cache Handling
@@ -322,8 +322,8 @@ open class Host: NSObject, URLSessionTaskDelegate, URLSessionDataDelegate, URLSe
     }
 
     if session == backgroundSession {      
-      if let infoDictionary = (error as? NSError)?.userInfo {
-        resumeDataCache?[task.request!.equalityIdentifier] = infoDictionary[NSURLSessionDownloadTaskResumeData as NSObject] as? Data
+        if let infoDictionary = (error as NSError?)?.userInfo {
+        resumeDataCache?[task.request!.equalityIdentifier] = infoDictionary[(NSURLSessionDownloadTaskResumeData as NSObject) as! String] as? Data
       }
     }
 
@@ -432,28 +432,30 @@ open class Host: NSObject, URLSessionTaskDelegate, URLSessionDataDelegate, URLSe
     securityError = SecPKCS12Import(certData as CFData, certOptions as CFDictionary, &items)
 
     if securityError == errSecSuccess {
+        if let certItems:CFArray = items {
+            let certItemsArray:Array = certItems as Array
+            let dict:AnyObject? = certItemsArray.first
 
-      let certItems:CFArray = items as CFArray!
-      let certItemsArray:Array = certItems as Array
-      let dict:AnyObject? = certItemsArray.first
+            if let certEntry:Dictionary = dict as? Dictionary<String, AnyObject> {
+                // grab the identity
+                let identityPointer:AnyObject? = certEntry["identity"]
 
-      if let certEntry:Dictionary = dict as? Dictionary<String, AnyObject> {
+                let secIdentityRef:SecIdentity = identityPointer as! SecIdentity
 
-        // grab the identity
-        let identityPointer:AnyObject? = certEntry["identity"]
-        let secIdentityRef:SecIdentity = identityPointer as! SecIdentity!
+                // grab the trust
+                let trustPointer:AnyObject? = certEntry["trust"]
+                let trustRef:SecTrust = trustPointer as! SecTrust
 
-        // grab the trust
-        let trustPointer:AnyObject? = certEntry["trust"]
-        let trustRef:SecTrust = trustPointer as! SecTrust
+                // grab the certificate chain
+                var certRef: SecCertificate?
+                SecIdentityCopyCertificate(secIdentityRef, &certRef)
+                let certArray = NSMutableArray()
 
-        // grab the certificate chain
-        var certRef: SecCertificate?
-        SecIdentityCopyCertificate(secIdentityRef, &certRef)
-        let certArray = NSMutableArray()
-        certArray.add(certRef as SecCertificate!)
-        
-        identityAndTrust = IdentityAndTrust(identityRef: secIdentityRef, trust: trustRef, certArray: certArray)
+                if let forAddCertRef: SecCertificate = certRef {
+                    certArray.add(forAddCertRef)
+                }
+                identityAndTrust = IdentityAndTrust(identityRef: secIdentityRef, trust: trustRef, certArray: certArray)
+            }
       }
     }
     return identityAndTrust

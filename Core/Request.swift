@@ -492,7 +492,7 @@ open class Request: NSObject {
       let jsonObject = try JSONSerialization.jsonObject(with: responseData, options: .mutableLeaves)
       return jsonObject as AnyObject?
     } catch {
-      Log.error("Error parsing as JSON \(responseAsString)")
+        Log.error("Error parsing as JSON \(String(describing: responseAsString))")
       return nil
     }
   }

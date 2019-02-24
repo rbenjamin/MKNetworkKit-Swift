@@ -39,8 +39,8 @@ public extension Dictionary {
       let (key, value) = $1
       return "\($0)" + "\(key)=\(value)&"
     }
-    if encodedString.characters.count > 0 {
-      encodedString.remove(at: encodedString.characters.index(before: encodedString.endIndex))
+    if encodedString.count > 0 {
+      encodedString.remove(at: encodedString.index(before: encodedString.endIndex))
     }
 
     let filterSet = (CharacterSet.urlFragmentAllowed as NSCharacterSet).mutableCopy() as! NSMutableCharacterSet
