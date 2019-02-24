@@ -591,6 +591,9 @@
 				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = "Steinlogic Consulting and Training Pte Ltd";
 				TargetAttributes = {
+					AB0F5F961C6DDE16006ED63F = {
+						LastSwiftMigration = 1010;
+					};
 					AB18DB851BC3F3AF00E25793 = {
 						CreatedOnToolsVersion = 7.1;
 						DevelopmentTeam = 54YTE3BLBX;
@@ -913,7 +916,6 @@
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = "watchsimulator watchos";
-				SWIFT_INCLUDE_PATHS = "${SRCROOT}/CommonCrypto/iOS";
 				SWIFT_VERSION = 3.0.1;
 				TARGETED_DEVICE_FAMILY = 4;
 				VALID_ARCHS = armv7k;
@@ -945,7 +947,6 @@
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = "watchsimulator watchos";
-				SWIFT_INCLUDE_PATHS = "${SRCROOT}/CommonCrypto/iOS";
 				SWIFT_VERSION = 3.0.1;
 				TARGETED_DEVICE_FAMILY = 4;
 				VALID_ARCHS = armv7k;
@@ -977,8 +978,7 @@
 				SDKROOT = appletvos;
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = "appletvsimulator appletvos";
-				SWIFT_INCLUDE_PATHS = "${SRCROOT}/CommonCrypto/iOS";
-				SWIFT_VERSION = 3.0.1;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 3;
 				TVOS_DEPLOYMENT_TARGET = 9.0;
 				VALID_ARCHS = arm64;
@@ -1009,8 +1009,7 @@
 				SDKROOT = appletvos;
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = "appletvsimulator appletvos";
-				SWIFT_INCLUDE_PATHS = "${SRCROOT}/CommonCrypto/iOS";
-				SWIFT_VERSION = 3.0.1;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 3;
 				TVOS_DEPLOYMENT_TARGET = 9.0;
 				VALID_ARCHS = arm64;
@@ -1092,7 +1091,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.steinlogic.MKNetworkKitTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
 				SWIFT_VERSION = 4.2;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MKNetworkKitDemo.app/MKNetworkKitDemo";
 			};
@@ -1107,7 +1105,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.steinlogic.MKNetworkKitTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
 				SWIFT_VERSION = 4.2;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MKNetworkKitDemo.app/MKNetworkKitDemo";
 			};
@@ -1325,7 +1322,6 @@
 				PRODUCT_NAME = MKNetworkKitAppex;
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
-				SWIFT_INCLUDE_PATHS = "${SRCROOT}/CommonCrypto/iOS";
 				SWIFT_VERSION = 3.0.1;
 				TVOS_DEPLOYMENT_TARGET = 9.0;
 				VALID_ARCHS = "arm64 armv7 armv7s i386 x86_64";
@@ -1358,7 +1354,6 @@
 				PRODUCT_NAME = MKNetworkKitAppex;
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
-				SWIFT_INCLUDE_PATHS = "${SRCROOT}/CommonCrypto/iOS";
 				SWIFT_VERSION = 3.0.1;
 				TVOS_DEPLOYMENT_TARGET = 9.0;
 				VALID_ARCHS = "arm64 armv7 armv7s i386 x86_64";
@@ -1395,7 +1390,6 @@
 				SDKROOT = appletvos;
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = "appletvsimulator appletvos";
-				SWIFT_INCLUDE_PATHS = "${SRCROOT}/CommonCrypto/iOS";
 				SWIFT_VERSION = 3.0.1;
 				TARGETED_DEVICE_FAMILY = 3;
 				TVOS_DEPLOYMENT_TARGET = 9.0;
@@ -1429,7 +1423,6 @@
 				SDKROOT = appletvos;
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = "appletvsimulator appletvos";
-				SWIFT_INCLUDE_PATHS = "${SRCROOT}/CommonCrypto/iOS";
 				SWIFT_VERSION = 3.0.1;
 				TARGETED_DEVICE_FAMILY = 3;
 				TVOS_DEPLOYMENT_TARGET = 9.0;

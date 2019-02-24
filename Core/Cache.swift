@@ -74,19 +74,19 @@ open class Cache<T>: CustomDebugStringConvertible {
     }
 
     #if os(iOS) || os(tvOS)
-      NotificationCenter.default.addObserver(forName: UIApplication.didReceiveMemoryWarningNotification,
+    NotificationCenter.default.addObserver(forName: UIApplication.didReceiveMemoryWarningNotification,
         object: nil, queue: nil, using: { (_) in
           self.flushToDisk()
       })
-      NotificationCenter.default.addObserver(forName: UIApplication.didEnterBackgroundNotification,
+    NotificationCenter.default.addObserver(forName: UIApplication.didEnterBackgroundNotification,
         object: nil, queue: nil, using: { (_) in
           self.flushToDisk()
       })
-      NotificationCenter.default.addObserver(forName: UIApplication.willResignActiveNotification,
+    NotificationCenter.default.addObserver(forName: UIApplication.willResignActiveNotification,
         object: nil, queue: nil, using: { (_) in
           self.flushToDisk()
       })
-      NotificationCenter.default.addObserver(forName: UIApplication.willTerminateNotification,
+    NotificationCenter.default.addObserver(forName: UIApplication.willTerminateNotification,
         object: nil, queue: nil, using: { (_) in
           self.flushToDisk()
       })
