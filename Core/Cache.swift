@@ -93,13 +93,13 @@ open class Cache<T>: CustomDebugStringConvertible {
     #endif
 
     #if os(OSX)
-      NotificationCenter.default.addObserver(forName: NSNotification.Name.NSApplicationWillHide, object: nil, queue: nil) { (_) in
+      NotificationCenter.default.addObserver(forName: NSApplication.willHideNotification, object: nil, queue: nil) { (_) in
         self.flushToDisk()
       }
-      NotificationCenter.default.addObserver(forName: NSNotification.Name.NSApplicationWillResignActive, object: nil, queue: nil) { (_) in
+      NotificationCenter.default.addObserver(forName: NSApplication.willResignActiveNotification, object: nil, queue: nil) { (_) in
         self.flushToDisk()
       }
-      NotificationCenter.default.addObserver(forName: NSNotification.Name.NSApplicationWillTerminate, object: nil, queue: nil) { (_) in
+      NotificationCenter.default.addObserver(forName: NSApplication.willTerminateNotification, object: nil, queue: nil) { (_) in
         self.flushToDisk()
       }
     #endif
@@ -198,13 +198,13 @@ open class Cache<T>: CustomDebugStringConvertible {
       NotificationCenter.default.removeObserver(self, name: UIApplication.willTerminateNotification, object: nil)
     #endif
     #if os(OSX)
-      NotificationCenter.default.addObserver(forName: NSNotification.Name.NSApplicationWillHide, object: nil, queue: nil) { (_) in
+      NotificationCenter.default.addObserver(forName: NSApplication.willHideNotification, object: nil, queue: nil) { (_) in
         self.flushToDisk()
       }
-      NotificationCenter.default.addObserver(forName: NSNotification.Name.NSApplicationWillResignActive, object: nil, queue: nil) { (_) in
+      NotificationCenter.default.addObserver(forName: NSApplication.willResignActiveNotification, object: nil, queue: nil) { (_) in
         self.flushToDisk()
       }
-      NotificationCenter.default.addObserver(forName: NSNotification.Name.NSApplicationWillTerminate, object: nil, queue: nil) { (_) in
+      NotificationCenter.default.addObserver(forName: NSApplication.willTerminateNotification, object: nil, queue: nil) { (_) in
         self.flushToDisk()
       }
     #endif

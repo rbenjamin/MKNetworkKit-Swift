@@ -31,13 +31,13 @@ class DownloadViewController: UIViewController, UIDocumentInteractionControllerD
     if let unwrappedRequest = request {
       if unwrappedRequest.state == .Paused {
         unwrappedRequest.resume()
-        downloadPauseResumeButton.setTitle("Pause", for: UIControlState())
+        downloadPauseResumeButton.setTitle("Pause", for: UIControl.State())
       } else {
         unwrappedRequest.pause()
-        downloadPauseResumeButton.setTitle("Resume", for: UIControlState())
+        downloadPauseResumeButton.setTitle("Resume", for: UIControl.State())
       }
     } else {
-      downloadPauseResumeButton.setTitle("Pause", for: UIControlState())
+      downloadPauseResumeButton.setTitle("Pause", for: UIControl.State())
       progressView.alpha = 1
       request = flickrHost.request(withAbsoluteURLString:textField.text!)
       let path = "\(NSHomeDirectory())/image.jpg"
